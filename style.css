@@ -1,1 +1,8 @@
-/* # */
+.brave-toolbar-gradient {
+    background: linear-gradient(-90deg, #A3278F 0%, #E52F50 100%);
+}
+
+.button-gradient{
+    background-color: white;
+    font-family: 'Muli';
+}

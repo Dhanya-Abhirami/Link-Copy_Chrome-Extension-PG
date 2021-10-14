@@ -1,6 +1,5 @@
-function copyURLToClipboard(){
-    navigator.redirect("www.google.com")
-    browser.tabs.getSelected(null, function (tab) {
+function copyLinkToClipboard(){
+    chrome.tabs.getSelected(null, function (tab) {
         copyToClipboard(tab.url);
     });
 }
@@ -9,22 +8,20 @@ function copyToClipboard(text){
     navigator.permissions.query({name: "clipboard-write"}).then(result => {
         if (result.state == "granted" || result.state == "prompt") {
             navigator.clipboard.writeText(text).then(() => {
-                alert("Copied!");
+                console.log("Copied!");
             }, () => {
-                console.error("Error Copying URL");
+                console.error("Error Copying Link");
             });
         }
         else{
             console.error("Permission Denied")
         }
-      });
-      navigator.redirect("www.google.com")
-    
+      });    
 }
 
-copyURL = document.getElementById("copyURL");
+copyLink = document.getElementById("copyLink");
 
-copyURL.addEventListener("click", function () {   
-    copyURLToClipboard();
+copyLink.addEventListener("click", function () {   
+    copyLinkToClipboard();
 })
 
